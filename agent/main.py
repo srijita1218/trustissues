@@ -1,4 +1,4 @@
-from agent.collectors.process_collector import collect_processes
+from agent.collectors.process_monitor import monitor_processes
 from agent.pipeline.normalizer import normalize_process
 from database.event_store import initialize_database, save_event
 
@@ -6,15 +6,24 @@ from database.event_store import initialize_database, save_event
 def main():
     initialize_database()
 
-    processes = collect_processes()
+    print("========================================")
+    print("        trustIssues Endpoint Agent")
+    print("========================================")
+    print()
+    print("Monitoring process activity...")
+    print()
 
-    print(f"Collected {len(processes)} processes.\n")
-
-    for process in processes:
+    for process in monitor_processes(interval=2):
         event = normalize_process(process)
+
         save_event(event)
 
-    print("Events saved successfully.")
+        print(
+            f"[PROCESS CREATED] "
+            f"{event.process_name} "
+            f"(PID={event.process_id}, "
+            f"PPID={event.parent_process_id})"
+        )
 
 
 if __name__ == "__main__":

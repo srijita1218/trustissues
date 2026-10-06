@@ -4,13 +4,12 @@ from datetime import datetime, timezone
 
 from agent.models.security_event import SecurityEvent
 
-#normalization layer
 
 def normalize_process(process_data: dict) -> SecurityEvent:
     return SecurityEvent(
         event_id=str(uuid.uuid4()),
         timestamp=datetime.now(timezone.utc),
-        event_type="PROCESS_OBSERVED",
+        event_type="PROCESS_CREATED",
         hostname=socket.gethostname(),
 
         process_id=process_data.get("pid"),
@@ -23,5 +22,6 @@ def normalize_process(process_data: dict) -> SecurityEvent:
         metadata={
             "cpu_percent": process_data.get("cpu_percent"),
             "memory_percent": process_data.get("memory_percent"),
+            "command_line": process_data.get("cmdline"),
         },
     )
