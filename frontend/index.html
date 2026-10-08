@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>trustIssues — EDR</title>
+
+    <link
+        rel="stylesheet"
+        href="css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/animations.css"
+    >
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    TI
+                </div>
+
+                <div class="brand-text">
+                    <h1>trustIssues</h1>
+                    <span>ENDPOINT SECURITY</span>
+                </div>
+
+            </div>
+
+
+            <nav class="navigation">
+
+                <div class="nav-section">
+                    <span class="nav-label">MONITOR</span>
+
+                    <button class="nav-item active">
+                        <span class="nav-icon">◈</span>
+                        Dashboard
+                    </button>
+
+                    <button class="nav-item">
+                        <span class="nav-icon">◉</span>
+                        Alerts
+                    </button>
+
+                    <button class="nav-item">
+                        <span class="nav-icon">⌁</span>
+                        Processes
+                    </button>
+                </div>
+
+
+                <div class="nav-section">
+                    <span class="nav-label">INVESTIGATE</span>
+
+                    <button class="nav-item">
+                        <span class="nav-icon">⌕</span>
+                        Investigations
+                    </button>
+
+                    <button class="nav-item">
+                        <span class="nav-icon">◇</span>
+                        MITRE ATT&CK
+                    </button>
+                </div>
+
+
+                <div class="nav-section">
+                    <span class="nav-label">SYSTEM</span>
+
+                    <button class="nav-item">
+                        <span class="nav-icon">⚙</span>
+                        Settings
+                    </button>
+
+                </div>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="endpoint-mini">
+
+                    <div class="endpoint-icon">
+                        PC
+                    </div>
+
+                    <div>
+                        <strong>TEST-PC</strong>
+                        <span>Endpoint protected</span>
+                    </div>
+
+                    <span class="online-dot"></span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="page-heading">
+
+                    <span class="eyebrow">
+                        SECURITY OPERATIONS
+                    </span>
+
+                    <h2>
+                        Dashboard
+                    </h2>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="live-status">
+
+                        <span class="live-pulse"></span>
+
+                        <span>LIVE</span>
+
+                    </div>
+
+
+                    <div class="endpoint-selector">
+
+                        <span class="selector-dot"></span>
+
+                        TEST-PC
+
+                        <span class="chevron">⌄</span>
+
+                    </div>
+
+
+                    <button class="icon-button">
+                        ◔
+                    </button>
+
+                    <div class="avatar">
+                        S
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <div class="content">
+
+
+                <!-- HERO -->
+
+                <section class="hero">
+
+                    <div>
+
+                        <span class="hero-label">
+                            ENDPOINT DETECTION & RESPONSE
+                        </span>
+
+                        <h1>
+                            Security overview
+                        </h1>
+
+                        <p>
+                            Real-time visibility into endpoint activity,
+                            detections and attack behavior.
+                        </p>
+
+                    </div>
+
+
+                    <div class="hero-time">
+
+                        <span>LAST UPDATED</span>
+
+                        <strong id="last-updated">
+                            --
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- STAT CARDS -->
+
+                <section class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-title">
+                                EVENTS ANALYZED
+                            </span>
+
+                            <span class="stat-icon">
+                                ◌
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            <span id="events-count">0</span>
+                        </div>
+
+                        <div class="stat-footer">
+                            <span class="trend neutral">
+                                ●
+                            </span>
+
+                            Endpoint telemetry
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-title">
+                                ALERTS GENERATED
+                            </span>
+
+                            <span class="stat-icon alert-icon">
+                                !
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            <span id="alerts-count">0</span>
+                        </div>
+
+                        <div class="stat-footer">
+                            Detection engine
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card critical-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-title">
+                                CRITICAL ALERTS
+                            </span>
+
+                            <span class="stat-icon critical-icon">
+                                !
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            <span id="critical-count">0</span>
+                        </div>
+
+                        <div class="stat-footer critical-text">
+                            Requires investigation
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-title">
+                                HIGH ALERTS
+                            </span>
+
+                            <span class="stat-icon high-icon">
+                                ▲
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            <span id="high-count">0</span>
+                        </div>
+
+                        <div class="stat-footer">
+                            Elevated activity
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- MAIN GRID -->
+
+                <section class="main-grid">
+
+
+                    <!-- THREAT ACTIVITY -->
+
+                    <div class="panel activity-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-kicker">
+                                    TELEMETRY
+                                </span>
+
+                                <h3>
+                                    Threat activity
+                                </h3>
+
+                            </div>
+
+                            <div class="panel-live">
+                                <span></span>
+                                Monitoring
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-chart">
+
+                            <div class="chart-y-axis">
+                                <span>100</span>
+                                <span>75</span>
+                                <span>50</span>
+                                <span>25</span>
+                                <span>0</span>
+                            </div>
+
+                            <div class="chart-area">
+
+                                <div class="grid-line line-1"></div>
+                                <div class="grid-line line-2"></div>
+                                <div class="grid-line line-3"></div>
+                                <div class="grid-line line-4"></div>
+
+                                <svg
+                                    class="activity-line"
+                                    viewBox="0 0 800 240"
+                                    preserveAspectRatio="none"
+                                >
+
+                                    <defs>
+
+                                        <linearGradient
+                                            id="areaGradient"
+                                            x1="0"
+                                            x2="0"
+                                            y1="0"
+                                            y2="1"
+                                        >
+
+                                            <stop
+                                                offset="0%"
+                                                stop-opacity=".25"
+                                            />
+
+                                            <stop
+                                                offset="100%"
+                                                stop-opacity="0"
+                                            />
+
+                                        </linearGradient>
+
+                                    </defs>
+
+
+                                    <path
+                                        class="chart-fill"
+                                        d="M0,200
+                                        C70,190 90,210 140,165
+                                        S210,170 250,145
+                                        S310,160 350,125
+                                        S420,145 460,105
+                                        S520,125 570,95
+                                        S640,130 690,80
+                                        S750,95 800,55
+                                        L800,240 L0,240 Z"
+                                    />
+
+
+                                    <path
+                                        class="chart-stroke"
+                                        d="M0,200
+                                        C70,190 90,210 140,165
+                                        S210,170 250,145
+                                        S310,160 350,125
+                                        S420,145 460,105
+                                        S520,125 570,95
+                                        S640,130 690,80
+                                        S750,95 800,55"
+                                    />
+
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-labels">
+                            <span>00:00</span>
+                            <span>04:00</span>
+                            <span>08:00</span>
+                            <span>12:00</span>
+                            <span>16:00</span>
+                            <span>20:00</span>
+                            <span>NOW</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RISK -->
+
+                    <div class="panel risk-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-kicker">
+                                    RISK ENGINE
+                                </span>
+
+                                <h3>
+                                    Current risk
+                                </h3>
+
+                            </div>
+
+                            <span class="risk-badge">
+                                CRITICAL
+                            </span>
+
+                        </div>
+
+
+                        <div class="risk-display">
+
+                            <div class="risk-ring">
+
+                                <svg viewBox="0 0 180 180">
+
+                                    <circle
+                                        class="ring-background"
+                                        cx="90"
+                                        cy="90"
+                                        r="72"
+                                    />
+
+                                    <circle
+                                        id="risk-ring"
+                                        class="ring-progress"
+                                        cx="90"
+                                        cy="90"
+                                        r="72"
+                                    />
+
+                                </svg>
+
+
+                                <div class="risk-number">
+
+                                    <strong id="risk-score">
+                                        0
+                                    </strong>
+
+                                    <span>/ 100</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="risk-description">
+
+                                <strong>
+                                    Elevated threat detected
+                                </strong>
+
+                                <p>
+                                    Multiple correlated detections
+                                    indicate suspicious endpoint behavior.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-breakdown">
+
+                            <div>
+                                <span>DETECTION</span>
+                                <strong>HIGH</strong>
+                            </div>
+
+                            <div>
+                                <span>CORRELATION</span>
+                                <strong>ACTIVE</strong>
+                            </div>
+
+                            <div>
+                                <span>RESPONSE</span>
+                                <strong>PENDING</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ALERTS + MITRE -->
+
+                <section class="lower-grid">
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-kicker">
+                                    DETECTION ENGINE
+                                </span>
+
+                                <h3>
+                                    Active detections
+                                </h3>
+
+                            </div>
+
+                            <button class="view-button">
+                                View all →
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="alerts-list"
+                            class="alerts-list"
+                        >
+
+                            <div class="loading-state">
+                                <div class="spinner"></div>
+                                Loading detections
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-kicker">
+                                    THREAT INTELLIGENCE
+                                </span>
+
+                                <h3>
+                                    MITRE ATT&CK
+                                </h3>
+
+                            </div>
+
+                            <span class="attack-count">
+                                MAPPED
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="mitre-list"
+                            class="mitre-list"
+                        >
+
+                            <div class="loading-state">
+                                <div class="spinner"></div>
+                                Loading techniques
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- INVESTIGATION -->
+                <section
+                    id="process-section"
+                    class="panel process-panel"
+                >
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                ENDPOINT TELEMETRY
+                            </span>
+
+                            <h3>
+                                Process activity
+                            </h3>
+
+                        </div>
+
+                        <span class="attack-count">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="process-list"
+                        class="process-list"
+                    >
+
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            Loading processes
+                        </div>
+
+                    </div>
+
+                </section>
+                <section class="panel investigation-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-kicker">
+                                INCIDENT RESPONSE
+                            </span>
+
+                            <h3>
+                                Latest investigation
+                            </h3>
+
+                        </div>
+
+                        <div class="investigation-status">
+                            <span></span>
+                            Investigation available
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="investigation"
+                        class="investigation-content"
+                    >
+
+                        <div class="loading-state">
+                            <div class="spinner"></div>
+                            Loading investigation
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <footer class="footer">
+
+                    <span>
+                        trustIssues EDR
+                    </span>
+
+                    <span>
+                        Detection engine v1.0
+                    </span>
+
+                    <span>
+                        API connected
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        <span class="toast-dot"></span>
+        <span id="toast-message">Connected</span>
+    </div>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/investigation.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

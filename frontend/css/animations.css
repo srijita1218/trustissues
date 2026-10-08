@@ -1,0 +1,135 @@
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.82);
+    }
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes chartReveal {
+
+    from {
+        stroke-dashoffset: 1000;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.live-pulse,
+.panel-live span {
+    animation:
+        pulse 1.8s ease-in-out infinite;
+}
+
+.online-dot,
+.investigation-status span {
+    animation:
+        pulse 2s ease-in-out infinite;
+}
+
+.spinner {
+    animation:
+        spin 0.8s linear infinite;
+}
+
+.activity-panel,
+.risk-panel,
+.lower-grid .panel,
+.investigation-panel {
+    animation:
+        fadeUp 0.5s ease both;
+}
+
+.stat-card {
+    animation:
+        fadeUp 0.45s ease both;
+}
+
+.stats-grid .stat-card:nth-child(1) {
+    animation-delay: 0.04s;
+}
+
+.stats-grid .stat-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.stats-grid .stat-card:nth-child(3) {
+    animation-delay: 0.12s;
+}
+
+.stats-grid .stat-card:nth-child(4) {
+    animation-delay: 0.16s;
+}
+
+.chart-stroke {
+    stroke-dasharray: 1000;
+
+    animation:
+        chartReveal 1.5s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+.risk-ring {
+    animation:
+        fadeUp 0.7s ease both;
+}
+
+.toast.visible {
+    animation:
+        glow 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
